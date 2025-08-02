@@ -11,11 +11,17 @@ from typing import List
 from app.utils.auth import verify_token
 from fastapi_cache.decorator import cache
 from app.utils.cache import user_token_cache_key
+from fastapi_cache import FastAPICache
+from fastapi_cache.backends.inmemory import InMemoryBackend
+from fastapi_cache.backends.redis import RedisBackend
+from redis.asyncio import Redis
+from app.core.config import settings
+from app.core.cache_utils import cache_dependency
 
 expire = 60  # Cache expiration time in seconds
 
 router = APIRouter(
-    dependencies=[Depends(verify_token)]
+    dependencies=[Depends(verify_token), Depends(cache_dependency)]
 )
 
 @router.post("/", response_model=UserRead)
@@ -47,9 +53,5 @@ def delete_user(request: Request, user_id: int, session: Session = Depends(get_s
 @router.get("/", response_model=List[UserRead])
 @cache(expire=expire, key_builder=user_token_cache_key)
 def list_users(request: Request, session: Session = Depends(get_session)) -> List[UserRead]:
-    start = time.perf_counter()
     service = UserService(UserRepository(session))
-    users = service.list_users()
-    duration = time.perf_counter() - start
-    logging.info(f"List users endpoint took {duration:.2f} seconds")
-    return users
+    return service.list_users()
