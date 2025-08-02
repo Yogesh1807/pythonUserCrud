@@ -1,0 +1,1537 @@
+2025-08-02 20:08:23,020 WARNING Error retrieving cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' from backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 178, in inner
+    ttl, cached = await backend.get_with_ttl(cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 16, in get_with_ttl
+    return await pipe.ttl(key).get(key).execute()  # type: ignore[union-attr,no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 1590, in execute
+    conn = await self.connection_pool.get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:08:23,025 INFO BEGIN (implicit)
+2025-08-02 20:08:23,025 INFO SELECT "user".id AS user_id, "user".field1 AS user_field1, "user".field2 AS user_field2, "user".field3 AS user_field3, "user".field4 AS user_field4, "user".field5 AS user_field5, "user".field6 AS user_field6, "user".field7 AS user_field7, "user".field8 AS user_field8, "user".field9 AS user_field9, "user".field10 AS user_field10, "user".field11 AS user_field11, "user".field12 AS user_field12, "user".field13 AS user_field13, "user".field14 AS user_field14, "user".field15 AS user_field15, "user".field16 AS user_field16, "user".field17 AS user_field17, "user".field18 AS user_field18, "user".field19 AS user_field19, "user".field20 AS user_field20, "user".field21 AS user_field21, "user".field22 AS user_field22, "user".field23 AS user_field23, "user".field24 AS user_field24, "user".field25 AS user_field25, "user".field26 AS user_field26, "user".field27 AS user_field27, "user".field28 AS user_field28, "user".field29 AS user_field29, "user".field30 AS user_field30, "user".field31 AS user_field31, "user".field32 AS user_field32, "user".field33 AS user_field33, "user".field34 AS user_field34, "user".field35 AS user_field35, "user".field36 AS user_field36, "user".field37 AS user_field37, "user".field38 AS user_field38, "user".field39 AS user_field39, "user".field40 AS user_field40, "user".field41 AS user_field41, "user".field42 AS user_field42, "user".field43 AS user_field43, "user".field44 AS user_field44, "user".field45 AS user_field45, "user".field46 AS user_field46, "user".field47 AS user_field47, "user".field48 AS user_field48, "user".field49 AS user_field49, "user".field50 AS user_field50, "user".field51 AS user_field51, "user".field52 AS user_field52, "user".field53 AS user_field53, "user".field54 AS user_field54, "user".field55 AS user_field55, "user".field56 AS user_field56, "user".field57 AS user_field57, "user".field58 AS user_field58, "user".field59 AS user_field59, "user".field60 AS user_field60, "user".field61 AS user_field61, "user".field62 AS user_field62, "user".field63 AS user_field63, "user".field64 AS user_field64, "user".field65 AS user_field65, "user".field66 AS user_field66, "user".field67 AS user_field67, "user".field68 AS user_field68, "user".field69 AS user_field69, "user".field70 AS user_field70, "user".field71 AS user_field71, "user".field72 AS user_field72, "user".field73 AS user_field73, "user".field74 AS user_field74, "user".field75 AS user_field75, "user".field76 AS user_field76, "user".field77 AS user_field77, "user".field78 AS user_field78, "user".field79 AS user_field79, "user".field80 AS user_field80, "user".field81 AS user_field81, "user".field82 AS user_field82, "user".field83 AS user_field83, "user".field84 AS user_field84, "user".field85 AS user_field85, "user".field86 AS user_field86, "user".field87 AS user_field87, "user".field88 AS user_field88, "user".field89 AS user_field89, "user".field90 AS user_field90, "user".field91 AS user_field91, "user".field92 AS user_field92, "user".field93 AS user_field93, "user".field94 AS user_field94, "user".field95 AS user_field95, "user".field96 AS user_field96, "user".field97 AS user_field97, "user".field98 AS user_field98, "user".field99 AS user_field99, "user".field100 AS user_field100, "user".created_by AS user_created_by, "user".created_at AS user_created_at, "user".modified_by AS user_modified_by, "user".modified_at AS user_modified_at 
+FROM "user"
+2025-08-02 20:08:23,025 INFO [cached since 90.54s ago] {}
+2025-08-02 20:08:27,103 WARNING Error setting cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' in backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 191, in inner
+    await backend.set(cache_key, to_cache, expire)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 22, in set
+    await self.redis.set(key, value, ex=expire)  # type: ignore[union-attr]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 672, in execute_command
+    conn = self.connection or await pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:08:27,110 INFO ROLLBACK
+2025-08-02 20:11:29,964 ERROR Exception: You must call init first! | Request: GET /users/ | Query:  | Headers: {'authorization': 'Bearer your-secret-token', 'user-agent': 'PostmanRuntime/7.44.0', 'accept': '*/*', 'postman-token': 'bdd00c60-aec8-43b8-8ee6-d7f15f994fb5', 'accept-encoding': 'gzip, deflate, br', 'connection': 'keep-alive', 'referer': 'http://localhost:8000/users', 'host': 'localhost:8000'}
+2025-08-02 20:11:29,964 ERROR SQLAlchemy error: You must call init first! | Request: GET /users/
+2025-08-02 20:13:23,740 ERROR Exception: You must call init first! | Request: GET /users/ | Query:  | Headers: {'authorization': 'Bearer your-secret-token', 'user-agent': 'PostmanRuntime/7.44.0', 'accept': '*/*', 'postman-token': '9f3fc231-d534-4546-aba8-46c99576018a', 'accept-encoding': 'gzip, deflate, br', 'connection': 'keep-alive', 'referer': 'http://localhost:8000/users', 'host': 'localhost:8000'}
+2025-08-02 20:13:23,741 ERROR SQLAlchemy error: You must call init first! | Request: GET /users/
+2025-08-02 20:14:00,477 WARNING Error retrieving cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' from backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 178, in inner
+    ttl, cached = await backend.get_with_ttl(cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 16, in get_with_ttl
+    return await pipe.ttl(key).get(key).execute()  # type: ignore[union-attr,no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 1590, in execute
+    conn = await self.connection_pool.get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:14:00,525 INFO select pg_catalog.version()
+2025-08-02 20:14:00,525 INFO [raw sql] {}
+2025-08-02 20:14:00,526 INFO select current_schema()
+2025-08-02 20:14:00,526 INFO [raw sql] {}
+2025-08-02 20:14:00,526 INFO show standard_conforming_strings
+2025-08-02 20:14:00,526 INFO [raw sql] {}
+2025-08-02 20:14:00,526 INFO BEGIN (implicit)
+2025-08-02 20:14:00,531 INFO SELECT "user".id AS user_id, "user".field1 AS user_field1, "user".field2 AS user_field2, "user".field3 AS user_field3, "user".field4 AS user_field4, "user".field5 AS user_field5, "user".field6 AS user_field6, "user".field7 AS user_field7, "user".field8 AS user_field8, "user".field9 AS user_field9, "user".field10 AS user_field10, "user".field11 AS user_field11, "user".field12 AS user_field12, "user".field13 AS user_field13, "user".field14 AS user_field14, "user".field15 AS user_field15, "user".field16 AS user_field16, "user".field17 AS user_field17, "user".field18 AS user_field18, "user".field19 AS user_field19, "user".field20 AS user_field20, "user".field21 AS user_field21, "user".field22 AS user_field22, "user".field23 AS user_field23, "user".field24 AS user_field24, "user".field25 AS user_field25, "user".field26 AS user_field26, "user".field27 AS user_field27, "user".field28 AS user_field28, "user".field29 AS user_field29, "user".field30 AS user_field30, "user".field31 AS user_field31, "user".field32 AS user_field32, "user".field33 AS user_field33, "user".field34 AS user_field34, "user".field35 AS user_field35, "user".field36 AS user_field36, "user".field37 AS user_field37, "user".field38 AS user_field38, "user".field39 AS user_field39, "user".field40 AS user_field40, "user".field41 AS user_field41, "user".field42 AS user_field42, "user".field43 AS user_field43, "user".field44 AS user_field44, "user".field45 AS user_field45, "user".field46 AS user_field46, "user".field47 AS user_field47, "user".field48 AS user_field48, "user".field49 AS user_field49, "user".field50 AS user_field50, "user".field51 AS user_field51, "user".field52 AS user_field52, "user".field53 AS user_field53, "user".field54 AS user_field54, "user".field55 AS user_field55, "user".field56 AS user_field56, "user".field57 AS user_field57, "user".field58 AS user_field58, "user".field59 AS user_field59, "user".field60 AS user_field60, "user".field61 AS user_field61, "user".field62 AS user_field62, "user".field63 AS user_field63, "user".field64 AS user_field64, "user".field65 AS user_field65, "user".field66 AS user_field66, "user".field67 AS user_field67, "user".field68 AS user_field68, "user".field69 AS user_field69, "user".field70 AS user_field70, "user".field71 AS user_field71, "user".field72 AS user_field72, "user".field73 AS user_field73, "user".field74 AS user_field74, "user".field75 AS user_field75, "user".field76 AS user_field76, "user".field77 AS user_field77, "user".field78 AS user_field78, "user".field79 AS user_field79, "user".field80 AS user_field80, "user".field81 AS user_field81, "user".field82 AS user_field82, "user".field83 AS user_field83, "user".field84 AS user_field84, "user".field85 AS user_field85, "user".field86 AS user_field86, "user".field87 AS user_field87, "user".field88 AS user_field88, "user".field89 AS user_field89, "user".field90 AS user_field90, "user".field91 AS user_field91, "user".field92 AS user_field92, "user".field93 AS user_field93, "user".field94 AS user_field94, "user".field95 AS user_field95, "user".field96 AS user_field96, "user".field97 AS user_field97, "user".field98 AS user_field98, "user".field99 AS user_field99, "user".field100 AS user_field100, "user".created_by AS user_created_by, "user".created_at AS user_created_at, "user".modified_by AS user_modified_by, "user".modified_at AS user_modified_at 
+FROM "user"
+2025-08-02 20:14:00,531 INFO [generated in 0.00015s] {}
+2025-08-02 20:14:04,627 WARNING Error setting cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' in backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 191, in inner
+    await backend.set(cache_key, to_cache, expire)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 22, in set
+    await self.redis.set(key, value, ex=expire)  # type: ignore[union-attr]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 672, in execute_command
+    conn = self.connection or await pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:14:04,632 INFO ROLLBACK
+2025-08-02 20:14:12,327 WARNING Error retrieving cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' from backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 178, in inner
+    ttl, cached = await backend.get_with_ttl(cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 16, in get_with_ttl
+    return await pipe.ttl(key).get(key).execute()  # type: ignore[union-attr,no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 1590, in execute
+    conn = await self.connection_pool.get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:14:12,330 INFO BEGIN (implicit)
+2025-08-02 20:14:12,330 INFO SELECT "user".id AS user_id, "user".field1 AS user_field1, "user".field2 AS user_field2, "user".field3 AS user_field3, "user".field4 AS user_field4, "user".field5 AS user_field5, "user".field6 AS user_field6, "user".field7 AS user_field7, "user".field8 AS user_field8, "user".field9 AS user_field9, "user".field10 AS user_field10, "user".field11 AS user_field11, "user".field12 AS user_field12, "user".field13 AS user_field13, "user".field14 AS user_field14, "user".field15 AS user_field15, "user".field16 AS user_field16, "user".field17 AS user_field17, "user".field18 AS user_field18, "user".field19 AS user_field19, "user".field20 AS user_field20, "user".field21 AS user_field21, "user".field22 AS user_field22, "user".field23 AS user_field23, "user".field24 AS user_field24, "user".field25 AS user_field25, "user".field26 AS user_field26, "user".field27 AS user_field27, "user".field28 AS user_field28, "user".field29 AS user_field29, "user".field30 AS user_field30, "user".field31 AS user_field31, "user".field32 AS user_field32, "user".field33 AS user_field33, "user".field34 AS user_field34, "user".field35 AS user_field35, "user".field36 AS user_field36, "user".field37 AS user_field37, "user".field38 AS user_field38, "user".field39 AS user_field39, "user".field40 AS user_field40, "user".field41 AS user_field41, "user".field42 AS user_field42, "user".field43 AS user_field43, "user".field44 AS user_field44, "user".field45 AS user_field45, "user".field46 AS user_field46, "user".field47 AS user_field47, "user".field48 AS user_field48, "user".field49 AS user_field49, "user".field50 AS user_field50, "user".field51 AS user_field51, "user".field52 AS user_field52, "user".field53 AS user_field53, "user".field54 AS user_field54, "user".field55 AS user_field55, "user".field56 AS user_field56, "user".field57 AS user_field57, "user".field58 AS user_field58, "user".field59 AS user_field59, "user".field60 AS user_field60, "user".field61 AS user_field61, "user".field62 AS user_field62, "user".field63 AS user_field63, "user".field64 AS user_field64, "user".field65 AS user_field65, "user".field66 AS user_field66, "user".field67 AS user_field67, "user".field68 AS user_field68, "user".field69 AS user_field69, "user".field70 AS user_field70, "user".field71 AS user_field71, "user".field72 AS user_field72, "user".field73 AS user_field73, "user".field74 AS user_field74, "user".field75 AS user_field75, "user".field76 AS user_field76, "user".field77 AS user_field77, "user".field78 AS user_field78, "user".field79 AS user_field79, "user".field80 AS user_field80, "user".field81 AS user_field81, "user".field82 AS user_field82, "user".field83 AS user_field83, "user".field84 AS user_field84, "user".field85 AS user_field85, "user".field86 AS user_field86, "user".field87 AS user_field87, "user".field88 AS user_field88, "user".field89 AS user_field89, "user".field90 AS user_field90, "user".field91 AS user_field91, "user".field92 AS user_field92, "user".field93 AS user_field93, "user".field94 AS user_field94, "user".field95 AS user_field95, "user".field96 AS user_field96, "user".field97 AS user_field97, "user".field98 AS user_field98, "user".field99 AS user_field99, "user".field100 AS user_field100, "user".created_by AS user_created_by, "user".created_at AS user_created_at, "user".modified_by AS user_modified_by, "user".modified_at AS user_modified_at 
+FROM "user"
+2025-08-02 20:14:12,331 INFO [cached since 11.8s ago] {}
+2025-08-02 20:14:16,436 WARNING Error setting cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' in backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 191, in inner
+    await backend.set(cache_key, to_cache, expire)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 22, in set
+    await self.redis.set(key, value, ex=expire)  # type: ignore[union-attr]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 672, in execute_command
+    conn = self.connection or await pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:14:16,443 INFO ROLLBACK
+2025-08-02 20:18:48,303 WARNING Error retrieving cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' from backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 178, in inner
+    ttl, cached = await backend.get_with_ttl(cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 16, in get_with_ttl
+    return await pipe.ttl(key).get(key).execute()  # type: ignore[union-attr,no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 1590, in execute
+    conn = await self.connection_pool.get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:18:48,319 ERROR Exception: name 'logging' is not defined | Request: GET /users/ | Query:  | Headers: {'authorization': 'Bearer your-secret-token', 'user-agent': 'PostmanRuntime/7.44.0', 'accept': '*/*', 'postman-token': 'b360c542-0239-4244-95d6-b3334e4e33df', 'accept-encoding': 'gzip, deflate, br', 'connection': 'keep-alive', 'referer': 'http://localhost:8000/users', 'host': 'localhost:8000'}
+2025-08-02 20:18:48,319 ERROR SQLAlchemy error: name 'logging' is not defined | Request: GET /users/
+2025-08-02 20:19:49,650 WARNING Error retrieving cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' from backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 178, in inner
+    ttl, cached = await backend.get_with_ttl(cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 16, in get_with_ttl
+    return await pipe.ttl(key).get(key).execute()  # type: ignore[union-attr,no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 1590, in execute
+    conn = await self.connection_pool.get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:19:49,668 INFO List users endpoint took 0.00 seconds
+2025-08-02 20:19:49,726 INFO select pg_catalog.version()
+2025-08-02 20:19:49,726 INFO [raw sql] {}
+2025-08-02 20:19:49,726 INFO select current_schema()
+2025-08-02 20:19:49,726 INFO [raw sql] {}
+2025-08-02 20:19:49,727 INFO show standard_conforming_strings
+2025-08-02 20:19:49,727 INFO [raw sql] {}
+2025-08-02 20:19:49,727 INFO BEGIN (implicit)
+2025-08-02 20:19:49,733 INFO SELECT "user".id AS user_id, "user".field1 AS user_field1, "user".field2 AS user_field2, "user".field3 AS user_field3, "user".field4 AS user_field4, "user".field5 AS user_field5, "user".field6 AS user_field6, "user".field7 AS user_field7, "user".field8 AS user_field8, "user".field9 AS user_field9, "user".field10 AS user_field10, "user".field11 AS user_field11, "user".field12 AS user_field12, "user".field13 AS user_field13, "user".field14 AS user_field14, "user".field15 AS user_field15, "user".field16 AS user_field16, "user".field17 AS user_field17, "user".field18 AS user_field18, "user".field19 AS user_field19, "user".field20 AS user_field20, "user".field21 AS user_field21, "user".field22 AS user_field22, "user".field23 AS user_field23, "user".field24 AS user_field24, "user".field25 AS user_field25, "user".field26 AS user_field26, "user".field27 AS user_field27, "user".field28 AS user_field28, "user".field29 AS user_field29, "user".field30 AS user_field30, "user".field31 AS user_field31, "user".field32 AS user_field32, "user".field33 AS user_field33, "user".field34 AS user_field34, "user".field35 AS user_field35, "user".field36 AS user_field36, "user".field37 AS user_field37, "user".field38 AS user_field38, "user".field39 AS user_field39, "user".field40 AS user_field40, "user".field41 AS user_field41, "user".field42 AS user_field42, "user".field43 AS user_field43, "user".field44 AS user_field44, "user".field45 AS user_field45, "user".field46 AS user_field46, "user".field47 AS user_field47, "user".field48 AS user_field48, "user".field49 AS user_field49, "user".field50 AS user_field50, "user".field51 AS user_field51, "user".field52 AS user_field52, "user".field53 AS user_field53, "user".field54 AS user_field54, "user".field55 AS user_field55, "user".field56 AS user_field56, "user".field57 AS user_field57, "user".field58 AS user_field58, "user".field59 AS user_field59, "user".field60 AS user_field60, "user".field61 AS user_field61, "user".field62 AS user_field62, "user".field63 AS user_field63, "user".field64 AS user_field64, "user".field65 AS user_field65, "user".field66 AS user_field66, "user".field67 AS user_field67, "user".field68 AS user_field68, "user".field69 AS user_field69, "user".field70 AS user_field70, "user".field71 AS user_field71, "user".field72 AS user_field72, "user".field73 AS user_field73, "user".field74 AS user_field74, "user".field75 AS user_field75, "user".field76 AS user_field76, "user".field77 AS user_field77, "user".field78 AS user_field78, "user".field79 AS user_field79, "user".field80 AS user_field80, "user".field81 AS user_field81, "user".field82 AS user_field82, "user".field83 AS user_field83, "user".field84 AS user_field84, "user".field85 AS user_field85, "user".field86 AS user_field86, "user".field87 AS user_field87, "user".field88 AS user_field88, "user".field89 AS user_field89, "user".field90 AS user_field90, "user".field91 AS user_field91, "user".field92 AS user_field92, "user".field93 AS user_field93, "user".field94 AS user_field94, "user".field95 AS user_field95, "user".field96 AS user_field96, "user".field97 AS user_field97, "user".field98 AS user_field98, "user".field99 AS user_field99, "user".field100 AS user_field100, "user".created_by AS user_created_by, "user".created_at AS user_created_at, "user".modified_by AS user_modified_by, "user".modified_at AS user_modified_at 
+FROM "user"
+2025-08-02 20:19:49,733 INFO [generated in 0.00025s] {}
+2025-08-02 20:19:53,787 WARNING Error setting cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' in backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 191, in inner
+    await backend.set(cache_key, to_cache, expire)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 22, in set
+    await self.redis.set(key, value, ex=expire)  # type: ignore[union-attr]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 672, in execute_command
+    conn = self.connection or await pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:19:53,793 INFO ROLLBACK
+2025-08-02 20:23:59,499 WARNING Error retrieving cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' from backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 178, in inner
+    ttl, cached = await backend.get_with_ttl(cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 16, in get_with_ttl
+    return await pipe.ttl(key).get(key).execute()  # type: ignore[union-attr,no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 1590, in execute
+    conn = await self.connection_pool.get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:23:59,506 WARNING List users endpoint took 0.00 seconds
+2025-08-02 20:23:59,558 INFO select pg_catalog.version()
+2025-08-02 20:23:59,559 INFO [raw sql] {}
+2025-08-02 20:23:59,559 INFO select current_schema()
+2025-08-02 20:23:59,559 INFO [raw sql] {}
+2025-08-02 20:23:59,559 INFO show standard_conforming_strings
+2025-08-02 20:23:59,559 INFO [raw sql] {}
+2025-08-02 20:23:59,560 INFO BEGIN (implicit)
+2025-08-02 20:23:59,564 INFO SELECT "user".id AS user_id, "user".field1 AS user_field1, "user".field2 AS user_field2, "user".field3 AS user_field3, "user".field4 AS user_field4, "user".field5 AS user_field5, "user".field6 AS user_field6, "user".field7 AS user_field7, "user".field8 AS user_field8, "user".field9 AS user_field9, "user".field10 AS user_field10, "user".field11 AS user_field11, "user".field12 AS user_field12, "user".field13 AS user_field13, "user".field14 AS user_field14, "user".field15 AS user_field15, "user".field16 AS user_field16, "user".field17 AS user_field17, "user".field18 AS user_field18, "user".field19 AS user_field19, "user".field20 AS user_field20, "user".field21 AS user_field21, "user".field22 AS user_field22, "user".field23 AS user_field23, "user".field24 AS user_field24, "user".field25 AS user_field25, "user".field26 AS user_field26, "user".field27 AS user_field27, "user".field28 AS user_field28, "user".field29 AS user_field29, "user".field30 AS user_field30, "user".field31 AS user_field31, "user".field32 AS user_field32, "user".field33 AS user_field33, "user".field34 AS user_field34, "user".field35 AS user_field35, "user".field36 AS user_field36, "user".field37 AS user_field37, "user".field38 AS user_field38, "user".field39 AS user_field39, "user".field40 AS user_field40, "user".field41 AS user_field41, "user".field42 AS user_field42, "user".field43 AS user_field43, "user".field44 AS user_field44, "user".field45 AS user_field45, "user".field46 AS user_field46, "user".field47 AS user_field47, "user".field48 AS user_field48, "user".field49 AS user_field49, "user".field50 AS user_field50, "user".field51 AS user_field51, "user".field52 AS user_field52, "user".field53 AS user_field53, "user".field54 AS user_field54, "user".field55 AS user_field55, "user".field56 AS user_field56, "user".field57 AS user_field57, "user".field58 AS user_field58, "user".field59 AS user_field59, "user".field60 AS user_field60, "user".field61 AS user_field61, "user".field62 AS user_field62, "user".field63 AS user_field63, "user".field64 AS user_field64, "user".field65 AS user_field65, "user".field66 AS user_field66, "user".field67 AS user_field67, "user".field68 AS user_field68, "user".field69 AS user_field69, "user".field70 AS user_field70, "user".field71 AS user_field71, "user".field72 AS user_field72, "user".field73 AS user_field73, "user".field74 AS user_field74, "user".field75 AS user_field75, "user".field76 AS user_field76, "user".field77 AS user_field77, "user".field78 AS user_field78, "user".field79 AS user_field79, "user".field80 AS user_field80, "user".field81 AS user_field81, "user".field82 AS user_field82, "user".field83 AS user_field83, "user".field84 AS user_field84, "user".field85 AS user_field85, "user".field86 AS user_field86, "user".field87 AS user_field87, "user".field88 AS user_field88, "user".field89 AS user_field89, "user".field90 AS user_field90, "user".field91 AS user_field91, "user".field92 AS user_field92, "user".field93 AS user_field93, "user".field94 AS user_field94, "user".field95 AS user_field95, "user".field96 AS user_field96, "user".field97 AS user_field97, "user".field98 AS user_field98, "user".field99 AS user_field99, "user".field100 AS user_field100, "user".created_by AS user_created_by, "user".created_at AS user_created_at, "user".modified_by AS user_modified_by, "user".modified_at AS user_modified_at 
+FROM "user"
+2025-08-02 20:23:59,564 INFO [generated in 0.00018s] {}
+2025-08-02 20:24:03,645 WARNING Error setting cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' in backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 191, in inner
+    await backend.set(cache_key, to_cache, expire)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 22, in set
+    await self.redis.set(key, value, ex=expire)  # type: ignore[union-attr]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 672, in execute_command
+    conn = self.connection or await pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:24:03,654 INFO ROLLBACK
+2025-08-02 20:24:48,589 WARNING Error retrieving cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' from backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 178, in inner
+    ttl, cached = await backend.get_with_ttl(cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 16, in get_with_ttl
+    return await pipe.ttl(key).get(key).execute()  # type: ignore[union-attr,no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 1590, in execute
+    conn = await self.connection_pool.get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:24:48,602 ERROR Exception: 'int' object is not callable | Request: GET /users/ | Query:  | Headers: {'authorization': 'Bearer your-secret-token', 'user-agent': 'PostmanRuntime/7.44.0', 'accept': '*/*', 'postman-token': '6e8dd468-1bcd-4997-a51a-772932386ca9', 'accept-encoding': 'gzip, deflate, br', 'connection': 'keep-alive', 'referer': 'http://localhost:8000/users', 'host': 'localhost:8000'}
+2025-08-02 20:24:48,602 ERROR SQLAlchemy error: 'int' object is not callable | Request: GET /users/
+2025-08-02 20:26:58,748 WARNING Error retrieving cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' from backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 178, in inner
+    ttl, cached = await backend.get_with_ttl(cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 16, in get_with_ttl
+    return await pipe.ttl(key).get(key).execute()  # type: ignore[union-attr,no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 1590, in execute
+    conn = await self.connection_pool.get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:26:58,753 ERROR Exception: 'int' object is not callable | Request: GET /users/ | Query:  | Headers: {'authorization': 'Bearer your-secret-token', 'user-agent': 'PostmanRuntime/7.44.0', 'accept': '*/*', 'postman-token': 'c50e71f7-bfa1-471a-9125-144d81f32796', 'accept-encoding': 'gzip, deflate, br', 'connection': 'keep-alive', 'referer': 'http://localhost:8000/users', 'host': 'localhost:8000'}
+2025-08-02 20:26:58,754 ERROR SQLAlchemy error: 'int' object is not callable | Request: GET /users/
+2025-08-02 20:28:20,178 WARNING Error retrieving cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' from backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 178, in inner
+    ttl, cached = await backend.get_with_ttl(cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 16, in get_with_ttl
+    return await pipe.ttl(key).get(key).execute()  # type: ignore[union-attr,no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 1590, in execute
+    conn = await self.connection_pool.get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:28:20,187 INFO List users endpoint took 0.00 seconds
+2025-08-02 20:28:20,242 INFO select pg_catalog.version()
+2025-08-02 20:28:20,242 INFO [raw sql] {}
+2025-08-02 20:28:20,243 INFO select current_schema()
+2025-08-02 20:28:20,243 INFO [raw sql] {}
+2025-08-02 20:28:20,243 INFO show standard_conforming_strings
+2025-08-02 20:28:20,243 INFO [raw sql] {}
+2025-08-02 20:28:20,244 INFO BEGIN (implicit)
+2025-08-02 20:28:20,248 INFO SELECT "user".id AS user_id, "user".field1 AS user_field1, "user".field2 AS user_field2, "user".field3 AS user_field3, "user".field4 AS user_field4, "user".field5 AS user_field5, "user".field6 AS user_field6, "user".field7 AS user_field7, "user".field8 AS user_field8, "user".field9 AS user_field9, "user".field10 AS user_field10, "user".field11 AS user_field11, "user".field12 AS user_field12, "user".field13 AS user_field13, "user".field14 AS user_field14, "user".field15 AS user_field15, "user".field16 AS user_field16, "user".field17 AS user_field17, "user".field18 AS user_field18, "user".field19 AS user_field19, "user".field20 AS user_field20, "user".field21 AS user_field21, "user".field22 AS user_field22, "user".field23 AS user_field23, "user".field24 AS user_field24, "user".field25 AS user_field25, "user".field26 AS user_field26, "user".field27 AS user_field27, "user".field28 AS user_field28, "user".field29 AS user_field29, "user".field30 AS user_field30, "user".field31 AS user_field31, "user".field32 AS user_field32, "user".field33 AS user_field33, "user".field34 AS user_field34, "user".field35 AS user_field35, "user".field36 AS user_field36, "user".field37 AS user_field37, "user".field38 AS user_field38, "user".field39 AS user_field39, "user".field40 AS user_field40, "user".field41 AS user_field41, "user".field42 AS user_field42, "user".field43 AS user_field43, "user".field44 AS user_field44, "user".field45 AS user_field45, "user".field46 AS user_field46, "user".field47 AS user_field47, "user".field48 AS user_field48, "user".field49 AS user_field49, "user".field50 AS user_field50, "user".field51 AS user_field51, "user".field52 AS user_field52, "user".field53 AS user_field53, "user".field54 AS user_field54, "user".field55 AS user_field55, "user".field56 AS user_field56, "user".field57 AS user_field57, "user".field58 AS user_field58, "user".field59 AS user_field59, "user".field60 AS user_field60, "user".field61 AS user_field61, "user".field62 AS user_field62, "user".field63 AS user_field63, "user".field64 AS user_field64, "user".field65 AS user_field65, "user".field66 AS user_field66, "user".field67 AS user_field67, "user".field68 AS user_field68, "user".field69 AS user_field69, "user".field70 AS user_field70, "user".field71 AS user_field71, "user".field72 AS user_field72, "user".field73 AS user_field73, "user".field74 AS user_field74, "user".field75 AS user_field75, "user".field76 AS user_field76, "user".field77 AS user_field77, "user".field78 AS user_field78, "user".field79 AS user_field79, "user".field80 AS user_field80, "user".field81 AS user_field81, "user".field82 AS user_field82, "user".field83 AS user_field83, "user".field84 AS user_field84, "user".field85 AS user_field85, "user".field86 AS user_field86, "user".field87 AS user_field87, "user".field88 AS user_field88, "user".field89 AS user_field89, "user".field90 AS user_field90, "user".field91 AS user_field91, "user".field92 AS user_field92, "user".field93 AS user_field93, "user".field94 AS user_field94, "user".field95 AS user_field95, "user".field96 AS user_field96, "user".field97 AS user_field97, "user".field98 AS user_field98, "user".field99 AS user_field99, "user".field100 AS user_field100, "user".created_by AS user_created_by, "user".created_at AS user_created_at, "user".modified_by AS user_modified_by, "user".modified_at AS user_modified_at 
+FROM "user"
+2025-08-02 20:28:20,248 INFO [generated in 0.00016s] {}
+2025-08-02 20:28:24,350 WARNING Error setting cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' in backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 191, in inner
+    await backend.set(cache_key, to_cache, expire)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 22, in set
+    await self.redis.set(key, value, ex=expire)  # type: ignore[union-attr]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 672, in execute_command
+    conn = self.connection or await pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:28:24,354 INFO ROLLBACK
+2025-08-02 20:28:24,355 ERROR Exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response',), 'msg': 'Input should be a valid list', 'input': {'users': [User(field29='string', field61='string', field93='string', field30='string', field62='string', field94='string', field1='string', field31='string', field63='string', field95='string', id=1, field32='string', field64='string', field96='string', field2='string', field34='string', field65='string', field97='string', field3='string', field35='string', field66='string', field98='string', field4='string', field36='string', field67='string', field99='string', field5='string', field37='string', field68='string', field100='string', field6='string', field38='string', field69='string', created_by=None, field7='string', field39='string', field70='string', created_at=None, field8='string', field40='string', field71='string', modified_by=None, field9='string', field41='string', field72='string', modified_at=None, field10='string', field42='string', field73='string', field11='string', field43='string', field74='string', field12='string', field44='string', field75='string', field13='string', field45='string', field76='string', field14='string', field46='string', field77='string', field15='string', field47='string', field78='string', field16='string', field48='string', field79='string', field17='string', field49='string', field80='string', field18='string', field50='string', field81='string', field19='string', field51='string', field82='string', field20='string', field52='string', field83='string', field21='string', field53='string', field84='string', field22='string', field54='string', field85='string', field23='string', field55='string', field86='string', field24='string', field56='string', field87='string', field33='string', field57='string', field88='string', field25='string', field58='string', field89='string', field26='string', field59='string', field90='string', field27='string', field60='string', field91='string', field28='string', field92='string'), User(field29='value29', field61='value61', field93='value93', field30='value30', field62='value62', field94='value94', field1='value1', field31='value31', field63='value63', field95='value95', id=2, field32='value32', field64='value64', field96='value96', field2='value2', field34='value34', field65='value65', field97='value97', field3='value3', field35='value35', field66='value66', field98='value98', field4='value4', field36='value36', field67='value67', field99='value99', field5='value5', field37='value37', field68='value68', field100='value100', field6='value6', field38='value38', field69='value69', created_by='admin', field7='value7', field39='value39', field70='value70', created_at=datetime.datetime(2025, 8, 2, 13, 41, 55, 779069), field8='value8', field40='value40', field71='value71', modified_by='admin', field9='value9', field41='value41', field72='value72', modified_at=datetime.datetime(2025, 8, 2, 13, 41, 55, 779071), field10='value10', field42='value42', field73='value73', field11='value11', field43='value43', field74='value74', field12='value12', field44='value44', field75='value75', field13='value13', field45='value45', field76='value76', field14='value14', field46='value46', field77='value77', field15='value15', field47='value47', field78='value78', field16='value16', field48='value48', field79='value79', field17='value17', field49='value49', field80='value80', field18='value18', field50='value50', field81='value81', field19='value19', field51='value51', field82='value82', field20='value20', field52='value52', field83='value83', field21='value21', field53='value53', field84='value84', field22='value22', field54='value54', field85='value85', field23='value23', field55='value55', field86='value86', field24='value24', field56='value56', field87='value87', field33='value33', field57='value57', field88='value88', field25='value25', field58='value58', field89='value89', field26='value26', field59='value59', field90='value90', field27='value27', field60='value60', field91='value91', field28='value28', field92='value92')], 'duration_ms': 0.0}}
+ | Request: GET /users/ | Query:  | Headers: {'authorization': 'Bearer your-secret-token', 'user-agent': 'PostmanRuntime/7.44.0', 'accept': '*/*', 'postman-token': 'b754c69f-ed74-4ae1-bee9-9c1921698efe', 'accept-encoding': 'gzip, deflate, br', 'connection': 'keep-alive', 'referer': 'http://localhost:8000/users', 'host': 'localhost:8000'}
+2025-08-02 20:28:24,355 ERROR SQLAlchemy error: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response',), 'msg': 'Input should be a valid list', 'input': {'users': [User(field29='string', field61='string', field93='string', field30='string', field62='string', field94='string', field1='string', field31='string', field63='string', field95='string', id=1, field32='string', field64='string', field96='string', field2='string', field34='string', field65='string', field97='string', field3='string', field35='string', field66='string', field98='string', field4='string', field36='string', field67='string', field99='string', field5='string', field37='string', field68='string', field100='string', field6='string', field38='string', field69='string', created_by=None, field7='string', field39='string', field70='string', created_at=None, field8='string', field40='string', field71='string', modified_by=None, field9='string', field41='string', field72='string', modified_at=None, field10='string', field42='string', field73='string', field11='string', field43='string', field74='string', field12='string', field44='string', field75='string', field13='string', field45='string', field76='string', field14='string', field46='string', field77='string', field15='string', field47='string', field78='string', field16='string', field48='string', field79='string', field17='string', field49='string', field80='string', field18='string', field50='string', field81='string', field19='string', field51='string', field82='string', field20='string', field52='string', field83='string', field21='string', field53='string', field84='string', field22='string', field54='string', field85='string', field23='string', field55='string', field86='string', field24='string', field56='string', field87='string', field33='string', field57='string', field88='string', field25='string', field58='string', field89='string', field26='string', field59='string', field90='string', field27='string', field60='string', field91='string', field28='string', field92='string'), User(field29='value29', field61='value61', field93='value93', field30='value30', field62='value62', field94='value94', field1='value1', field31='value31', field63='value63', field95='value95', id=2, field32='value32', field64='value64', field96='value96', field2='value2', field34='value34', field65='value65', field97='value97', field3='value3', field35='value35', field66='value66', field98='value98', field4='value4', field36='value36', field67='value67', field99='value99', field5='value5', field37='value37', field68='value68', field100='value100', field6='value6', field38='value38', field69='value69', created_by='admin', field7='value7', field39='value39', field70='value70', created_at=datetime.datetime(2025, 8, 2, 13, 41, 55, 779069), field8='value8', field40='value40', field71='value71', modified_by='admin', field9='value9', field41='value41', field72='value72', modified_at=datetime.datetime(2025, 8, 2, 13, 41, 55, 779071), field10='value10', field42='value42', field73='value73', field11='value11', field43='value43', field74='value74', field12='value12', field44='value44', field75='value75', field13='value13', field45='value45', field76='value76', field14='value14', field46='value46', field77='value77', field15='value15', field47='value47', field78='value78', field16='value16', field48='value48', field79='value79', field17='value17', field49='value49', field80='value80', field18='value18', field50='value50', field81='value81', field19='value19', field51='value51', field82='value82', field20='value20', field52='value52', field83='value83', field21='value21', field53='value53', field84='value84', field22='value22', field54='value54', field85='value85', field23='value23', field55='value55', field86='value86', field24='value24', field56='value56', field87='value87', field33='value33', field57='value57', field88='value88', field25='value25', field58='value58', field89='value89', field26='value26', field59='value59', field90='value90', field27='value27', field60='value60', field91='value91', field28='value28', field92='value92')], 'duration_ms': 0.0}}
+ | Request: GET /users/
+2025-08-02 20:29:43,638 WARNING Error retrieving cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' from backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 178, in inner
+    ttl, cached = await backend.get_with_ttl(cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 16, in get_with_ttl
+    return await pipe.ttl(key).get(key).execute()  # type: ignore[union-attr,no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 1590, in execute
+    conn = await self.connection_pool.get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:29:43,695 INFO select pg_catalog.version()
+2025-08-02 20:29:43,695 INFO [raw sql] {}
+2025-08-02 20:29:43,695 INFO select current_schema()
+2025-08-02 20:29:43,695 INFO [raw sql] {}
+2025-08-02 20:29:43,696 INFO show standard_conforming_strings
+2025-08-02 20:29:43,696 INFO [raw sql] {}
+2025-08-02 20:29:43,696 INFO BEGIN (implicit)
+2025-08-02 20:29:43,701 INFO SELECT "user".id AS user_id, "user".field1 AS user_field1, "user".field2 AS user_field2, "user".field3 AS user_field3, "user".field4 AS user_field4, "user".field5 AS user_field5, "user".field6 AS user_field6, "user".field7 AS user_field7, "user".field8 AS user_field8, "user".field9 AS user_field9, "user".field10 AS user_field10, "user".field11 AS user_field11, "user".field12 AS user_field12, "user".field13 AS user_field13, "user".field14 AS user_field14, "user".field15 AS user_field15, "user".field16 AS user_field16, "user".field17 AS user_field17, "user".field18 AS user_field18, "user".field19 AS user_field19, "user".field20 AS user_field20, "user".field21 AS user_field21, "user".field22 AS user_field22, "user".field23 AS user_field23, "user".field24 AS user_field24, "user".field25 AS user_field25, "user".field26 AS user_field26, "user".field27 AS user_field27, "user".field28 AS user_field28, "user".field29 AS user_field29, "user".field30 AS user_field30, "user".field31 AS user_field31, "user".field32 AS user_field32, "user".field33 AS user_field33, "user".field34 AS user_field34, "user".field35 AS user_field35, "user".field36 AS user_field36, "user".field37 AS user_field37, "user".field38 AS user_field38, "user".field39 AS user_field39, "user".field40 AS user_field40, "user".field41 AS user_field41, "user".field42 AS user_field42, "user".field43 AS user_field43, "user".field44 AS user_field44, "user".field45 AS user_field45, "user".field46 AS user_field46, "user".field47 AS user_field47, "user".field48 AS user_field48, "user".field49 AS user_field49, "user".field50 AS user_field50, "user".field51 AS user_field51, "user".field52 AS user_field52, "user".field53 AS user_field53, "user".field54 AS user_field54, "user".field55 AS user_field55, "user".field56 AS user_field56, "user".field57 AS user_field57, "user".field58 AS user_field58, "user".field59 AS user_field59, "user".field60 AS user_field60, "user".field61 AS user_field61, "user".field62 AS user_field62, "user".field63 AS user_field63, "user".field64 AS user_field64, "user".field65 AS user_field65, "user".field66 AS user_field66, "user".field67 AS user_field67, "user".field68 AS user_field68, "user".field69 AS user_field69, "user".field70 AS user_field70, "user".field71 AS user_field71, "user".field72 AS user_field72, "user".field73 AS user_field73, "user".field74 AS user_field74, "user".field75 AS user_field75, "user".field76 AS user_field76, "user".field77 AS user_field77, "user".field78 AS user_field78, "user".field79 AS user_field79, "user".field80 AS user_field80, "user".field81 AS user_field81, "user".field82 AS user_field82, "user".field83 AS user_field83, "user".field84 AS user_field84, "user".field85 AS user_field85, "user".field86 AS user_field86, "user".field87 AS user_field87, "user".field88 AS user_field88, "user".field89 AS user_field89, "user".field90 AS user_field90, "user".field91 AS user_field91, "user".field92 AS user_field92, "user".field93 AS user_field93, "user".field94 AS user_field94, "user".field95 AS user_field95, "user".field96 AS user_field96, "user".field97 AS user_field97, "user".field98 AS user_field98, "user".field99 AS user_field99, "user".field100 AS user_field100, "user".created_by AS user_created_by, "user".created_at AS user_created_at, "user".modified_by AS user_modified_by, "user".modified_at AS user_modified_at 
+FROM "user"
+2025-08-02 20:29:43,701 INFO [generated in 0.00017s] {}
+2025-08-02 20:29:47,807 WARNING Error setting cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' in backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 191, in inner
+    await backend.set(cache_key, to_cache, expire)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 22, in set
+    await self.redis.set(key, value, ex=expire)  # type: ignore[union-attr]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 672, in execute_command
+    conn = self.connection or await pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:29:47,813 INFO ROLLBACK
+2025-08-02 20:29:47,814 ERROR Exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response',), 'msg': 'Input should be a valid list', 'input': {'users': [User(field29='string', field61='string', field93='string', field30='string', field62='string', field94='string', field1='string', field31='string', field63='string', field95='string', id=1, field32='string', field64='string', field96='string', field2='string', field34='string', field65='string', field97='string', field3='string', field35='string', field66='string', field98='string', field4='string', field36='string', field67='string', field99='string', field5='string', field37='string', field68='string', field100='string', field6='string', field38='string', field69='string', created_by=None, field7='string', field39='string', field70='string', created_at=None, field8='string', field40='string', field71='string', modified_by=None, field9='string', field41='string', field72='string', modified_at=None, field10='string', field42='string', field73='string', field11='string', field43='string', field74='string', field12='string', field44='string', field75='string', field13='string', field45='string', field76='string', field14='string', field46='string', field77='string', field15='string', field47='string', field78='string', field16='string', field48='string', field79='string', field17='string', field49='string', field80='string', field18='string', field50='string', field81='string', field19='string', field51='string', field82='string', field20='string', field52='string', field83='string', field21='string', field53='string', field84='string', field22='string', field54='string', field85='string', field23='string', field55='string', field86='string', field24='string', field56='string', field87='string', field33='string', field57='string', field88='string', field25='string', field58='string', field89='string', field26='string', field59='string', field90='string', field27='string', field60='string', field91='string', field28='string', field92='string'), User(field29='value29', field61='value61', field93='value93', field30='value30', field62='value62', field94='value94', field1='value1', field31='value31', field63='value63', field95='value95', id=2, field32='value32', field64='value64', field96='value96', field2='value2', field34='value34', field65='value65', field97='value97', field3='value3', field35='value35', field66='value66', field98='value98', field4='value4', field36='value36', field67='value67', field99='value99', field5='value5', field37='value37', field68='value68', field100='value100', field6='value6', field38='value38', field69='value69', created_by='admin', field7='value7', field39='value39', field70='value70', created_at=datetime.datetime(2025, 8, 2, 13, 41, 55, 779069), field8='value8', field40='value40', field71='value71', modified_by='admin', field9='value9', field41='value41', field72='value72', modified_at=datetime.datetime(2025, 8, 2, 13, 41, 55, 779071), field10='value10', field42='value42', field73='value73', field11='value11', field43='value43', field74='value74', field12='value12', field44='value44', field75='value75', field13='value13', field45='value45', field76='value76', field14='value14', field46='value46', field77='value77', field15='value15', field47='value47', field78='value78', field16='value16', field48='value48', field79='value79', field17='value17', field49='value49', field80='value80', field18='value18', field50='value50', field81='value81', field19='value19', field51='value51', field82='value82', field20='value20', field52='value52', field83='value83', field21='value21', field53='value53', field84='value84', field22='value22', field54='value54', field85='value85', field23='value23', field55='value55', field86='value86', field24='value24', field56='value56', field87='value87', field33='value33', field57='value57', field88='value88', field25='value25', field58='value58', field89='value89', field26='value26', field59='value59', field90='value90', field27='value27', field60='value60', field91='value91', field28='value28', field92='value92')], 'duration_ms': 0.01}}
+ | Request: GET /users/ | Query:  | Headers: {'authorization': 'Bearer your-secret-token', 'user-agent': 'PostmanRuntime/7.44.0', 'accept': '*/*', 'postman-token': '5754c976-cd7d-41d7-bf74-b303bd36a761', 'accept-encoding': 'gzip, deflate, br', 'connection': 'keep-alive', 'referer': 'http://localhost:8000/users', 'host': 'localhost:8000'}
+2025-08-02 20:29:47,815 ERROR SQLAlchemy error: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response',), 'msg': 'Input should be a valid list', 'input': {'users': [User(field29='string', field61='string', field93='string', field30='string', field62='string', field94='string', field1='string', field31='string', field63='string', field95='string', id=1, field32='string', field64='string', field96='string', field2='string', field34='string', field65='string', field97='string', field3='string', field35='string', field66='string', field98='string', field4='string', field36='string', field67='string', field99='string', field5='string', field37='string', field68='string', field100='string', field6='string', field38='string', field69='string', created_by=None, field7='string', field39='string', field70='string', created_at=None, field8='string', field40='string', field71='string', modified_by=None, field9='string', field41='string', field72='string', modified_at=None, field10='string', field42='string', field73='string', field11='string', field43='string', field74='string', field12='string', field44='string', field75='string', field13='string', field45='string', field76='string', field14='string', field46='string', field77='string', field15='string', field47='string', field78='string', field16='string', field48='string', field79='string', field17='string', field49='string', field80='string', field18='string', field50='string', field81='string', field19='string', field51='string', field82='string', field20='string', field52='string', field83='string', field21='string', field53='string', field84='string', field22='string', field54='string', field85='string', field23='string', field55='string', field86='string', field24='string', field56='string', field87='string', field33='string', field57='string', field88='string', field25='string', field58='string', field89='string', field26='string', field59='string', field90='string', field27='string', field60='string', field91='string', field28='string', field92='string'), User(field29='value29', field61='value61', field93='value93', field30='value30', field62='value62', field94='value94', field1='value1', field31='value31', field63='value63', field95='value95', id=2, field32='value32', field64='value64', field96='value96', field2='value2', field34='value34', field65='value65', field97='value97', field3='value3', field35='value35', field66='value66', field98='value98', field4='value4', field36='value36', field67='value67', field99='value99', field5='value5', field37='value37', field68='value68', field100='value100', field6='value6', field38='value38', field69='value69', created_by='admin', field7='value7', field39='value39', field70='value70', created_at=datetime.datetime(2025, 8, 2, 13, 41, 55, 779069), field8='value8', field40='value40', field71='value71', modified_by='admin', field9='value9', field41='value41', field72='value72', modified_at=datetime.datetime(2025, 8, 2, 13, 41, 55, 779071), field10='value10', field42='value42', field73='value73', field11='value11', field43='value43', field74='value74', field12='value12', field44='value44', field75='value75', field13='value13', field45='value45', field76='value76', field14='value14', field46='value46', field77='value77', field15='value15', field47='value47', field78='value78', field16='value16', field48='value48', field79='value79', field17='value17', field49='value49', field80='value80', field18='value18', field50='value50', field81='value81', field19='value19', field51='value51', field82='value82', field20='value20', field52='value52', field83='value83', field21='value21', field53='value53', field84='value84', field22='value22', field54='value54', field85='value85', field23='value23', field55='value55', field86='value86', field24='value24', field56='value56', field87='value87', field33='value33', field57='value57', field88='value88', field25='value25', field58='value58', field89='value89', field26='value26', field59='value59', field90='value90', field27='value27', field60='value60', field91='value91', field28='value28', field92='value92')], 'duration_ms': 0.01}}
+ | Request: GET /users/
+2025-08-02 20:30:46,709 WARNING Error retrieving cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' from backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 178, in inner
+    ttl, cached = await backend.get_with_ttl(cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 16, in get_with_ttl
+    return await pipe.ttl(key).get(key).execute()  # type: ignore[union-attr,no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 1590, in execute
+    conn = await self.connection_pool.get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:30:46,752 INFO select pg_catalog.version()
+2025-08-02 20:30:46,753 INFO [raw sql] {}
+2025-08-02 20:30:46,753 INFO select current_schema()
+2025-08-02 20:30:46,753 INFO [raw sql] {}
+2025-08-02 20:30:46,753 INFO show standard_conforming_strings
+2025-08-02 20:30:46,754 INFO [raw sql] {}
+2025-08-02 20:30:46,754 INFO BEGIN (implicit)
+2025-08-02 20:30:46,759 INFO SELECT "user".id AS user_id, "user".field1 AS user_field1, "user".field2 AS user_field2, "user".field3 AS user_field3, "user".field4 AS user_field4, "user".field5 AS user_field5, "user".field6 AS user_field6, "user".field7 AS user_field7, "user".field8 AS user_field8, "user".field9 AS user_field9, "user".field10 AS user_field10, "user".field11 AS user_field11, "user".field12 AS user_field12, "user".field13 AS user_field13, "user".field14 AS user_field14, "user".field15 AS user_field15, "user".field16 AS user_field16, "user".field17 AS user_field17, "user".field18 AS user_field18, "user".field19 AS user_field19, "user".field20 AS user_field20, "user".field21 AS user_field21, "user".field22 AS user_field22, "user".field23 AS user_field23, "user".field24 AS user_field24, "user".field25 AS user_field25, "user".field26 AS user_field26, "user".field27 AS user_field27, "user".field28 AS user_field28, "user".field29 AS user_field29, "user".field30 AS user_field30, "user".field31 AS user_field31, "user".field32 AS user_field32, "user".field33 AS user_field33, "user".field34 AS user_field34, "user".field35 AS user_field35, "user".field36 AS user_field36, "user".field37 AS user_field37, "user".field38 AS user_field38, "user".field39 AS user_field39, "user".field40 AS user_field40, "user".field41 AS user_field41, "user".field42 AS user_field42, "user".field43 AS user_field43, "user".field44 AS user_field44, "user".field45 AS user_field45, "user".field46 AS user_field46, "user".field47 AS user_field47, "user".field48 AS user_field48, "user".field49 AS user_field49, "user".field50 AS user_field50, "user".field51 AS user_field51, "user".field52 AS user_field52, "user".field53 AS user_field53, "user".field54 AS user_field54, "user".field55 AS user_field55, "user".field56 AS user_field56, "user".field57 AS user_field57, "user".field58 AS user_field58, "user".field59 AS user_field59, "user".field60 AS user_field60, "user".field61 AS user_field61, "user".field62 AS user_field62, "user".field63 AS user_field63, "user".field64 AS user_field64, "user".field65 AS user_field65, "user".field66 AS user_field66, "user".field67 AS user_field67, "user".field68 AS user_field68, "user".field69 AS user_field69, "user".field70 AS user_field70, "user".field71 AS user_field71, "user".field72 AS user_field72, "user".field73 AS user_field73, "user".field74 AS user_field74, "user".field75 AS user_field75, "user".field76 AS user_field76, "user".field77 AS user_field77, "user".field78 AS user_field78, "user".field79 AS user_field79, "user".field80 AS user_field80, "user".field81 AS user_field81, "user".field82 AS user_field82, "user".field83 AS user_field83, "user".field84 AS user_field84, "user".field85 AS user_field85, "user".field86 AS user_field86, "user".field87 AS user_field87, "user".field88 AS user_field88, "user".field89 AS user_field89, "user".field90 AS user_field90, "user".field91 AS user_field91, "user".field92 AS user_field92, "user".field93 AS user_field93, "user".field94 AS user_field94, "user".field95 AS user_field95, "user".field96 AS user_field96, "user".field97 AS user_field97, "user".field98 AS user_field98, "user".field99 AS user_field99, "user".field100 AS user_field100, "user".created_by AS user_created_by, "user".created_at AS user_created_at, "user".modified_by AS user_modified_by, "user".modified_at AS user_modified_at 
+FROM "user"
+2025-08-02 20:30:46,759 INFO [generated in 0.00016s] {}
+2025-08-02 20:30:50,859 WARNING Error setting cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' in backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 191, in inner
+    await backend.set(cache_key, to_cache, expire)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 22, in set
+    await self.redis.set(key, value, ex=expire)  # type: ignore[union-attr]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 672, in execute_command
+    conn = self.connection or await pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 20:30:50,862 INFO ROLLBACK
+2025-08-02 21:11:48,336 WARNING Error retrieving cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' from backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 178, in inner
+    ttl, cached = await backend.get_with_ttl(cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 16, in get_with_ttl
+    return await pipe.ttl(key).get(key).execute()  # type: ignore[union-attr,no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 1590, in execute
+    conn = await self.connection_pool.get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 21:11:48,464 INFO select pg_catalog.version()
+2025-08-02 21:11:48,464 INFO [raw sql] {}
+2025-08-02 21:11:48,465 INFO select current_schema()
+2025-08-02 21:11:48,465 INFO [raw sql] {}
+2025-08-02 21:11:48,465 INFO show standard_conforming_strings
+2025-08-02 21:11:48,466 INFO [raw sql] {}
+2025-08-02 21:11:48,466 INFO BEGIN (implicit)
+2025-08-02 21:11:48,471 INFO SELECT "user".id AS user_id, "user".field1 AS user_field1, "user".field2 AS user_field2, "user".field3 AS user_field3, "user".field4 AS user_field4, "user".field5 AS user_field5, "user".field6 AS user_field6, "user".field7 AS user_field7, "user".field8 AS user_field8, "user".field9 AS user_field9, "user".field10 AS user_field10, "user".field11 AS user_field11, "user".field12 AS user_field12, "user".field13 AS user_field13, "user".field14 AS user_field14, "user".field15 AS user_field15, "user".field16 AS user_field16, "user".field17 AS user_field17, "user".field18 AS user_field18, "user".field19 AS user_field19, "user".field20 AS user_field20, "user".field21 AS user_field21, "user".field22 AS user_field22, "user".field23 AS user_field23, "user".field24 AS user_field24, "user".field25 AS user_field25, "user".field26 AS user_field26, "user".field27 AS user_field27, "user".field28 AS user_field28, "user".field29 AS user_field29, "user".field30 AS user_field30, "user".field31 AS user_field31, "user".field32 AS user_field32, "user".field33 AS user_field33, "user".field34 AS user_field34, "user".field35 AS user_field35, "user".field36 AS user_field36, "user".field37 AS user_field37, "user".field38 AS user_field38, "user".field39 AS user_field39, "user".field40 AS user_field40, "user".field41 AS user_field41, "user".field42 AS user_field42, "user".field43 AS user_field43, "user".field44 AS user_field44, "user".field45 AS user_field45, "user".field46 AS user_field46, "user".field47 AS user_field47, "user".field48 AS user_field48, "user".field49 AS user_field49, "user".field50 AS user_field50, "user".field51 AS user_field51, "user".field52 AS user_field52, "user".field53 AS user_field53, "user".field54 AS user_field54, "user".field55 AS user_field55, "user".field56 AS user_field56, "user".field57 AS user_field57, "user".field58 AS user_field58, "user".field59 AS user_field59, "user".field60 AS user_field60, "user".field61 AS user_field61, "user".field62 AS user_field62, "user".field63 AS user_field63, "user".field64 AS user_field64, "user".field65 AS user_field65, "user".field66 AS user_field66, "user".field67 AS user_field67, "user".field68 AS user_field68, "user".field69 AS user_field69, "user".field70 AS user_field70, "user".field71 AS user_field71, "user".field72 AS user_field72, "user".field73 AS user_field73, "user".field74 AS user_field74, "user".field75 AS user_field75, "user".field76 AS user_field76, "user".field77 AS user_field77, "user".field78 AS user_field78, "user".field79 AS user_field79, "user".field80 AS user_field80, "user".field81 AS user_field81, "user".field82 AS user_field82, "user".field83 AS user_field83, "user".field84 AS user_field84, "user".field85 AS user_field85, "user".field86 AS user_field86, "user".field87 AS user_field87, "user".field88 AS user_field88, "user".field89 AS user_field89, "user".field90 AS user_field90, "user".field91 AS user_field91, "user".field92 AS user_field92, "user".field93 AS user_field93, "user".field94 AS user_field94, "user".field95 AS user_field95, "user".field96 AS user_field96, "user".field97 AS user_field97, "user".field98 AS user_field98, "user".field99 AS user_field99, "user".field100 AS user_field100, "user".created_by AS user_created_by, "user".created_at AS user_created_at, "user".modified_by AS user_modified_by, "user".modified_at AS user_modified_at 
+FROM "user"
+2025-08-02 21:11:48,471 INFO [generated in 0.00014s] {}
+2025-08-02 21:11:48,473 INFO List users endpoint took 0.05 seconds
+2025-08-02 21:11:52,572 WARNING Error setting cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' in backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 191, in inner
+    await backend.set(cache_key, to_cache, expire)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 22, in set
+    await self.redis.set(key, value, ex=expire)  # type: ignore[union-attr]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 672, in execute_command
+    conn = self.connection or await pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 21:11:52,577 INFO ROLLBACK
+2025-08-02 21:12:39,997 WARNING Error retrieving cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' from backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 178, in inner
+    ttl, cached = await backend.get_with_ttl(cache_key)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 16, in get_with_ttl
+    return await pipe.ttl(key).get(key).execute()  # type: ignore[union-attr,no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 1590, in execute
+    conn = await self.connection_pool.get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 21:12:40,047 INFO select pg_catalog.version()
+2025-08-02 21:12:40,047 INFO [raw sql] {}
+2025-08-02 21:12:40,048 INFO select current_schema()
+2025-08-02 21:12:40,048 INFO [raw sql] {}
+2025-08-02 21:12:40,048 INFO show standard_conforming_strings
+2025-08-02 21:12:40,048 INFO [raw sql] {}
+2025-08-02 21:12:40,049 INFO BEGIN (implicit)
+2025-08-02 21:12:40,053 INFO SELECT "user".id AS user_id, "user".field1 AS user_field1, "user".field2 AS user_field2, "user".field3 AS user_field3, "user".field4 AS user_field4, "user".field5 AS user_field5, "user".field6 AS user_field6, "user".field7 AS user_field7, "user".field8 AS user_field8, "user".field9 AS user_field9, "user".field10 AS user_field10, "user".field11 AS user_field11, "user".field12 AS user_field12, "user".field13 AS user_field13, "user".field14 AS user_field14, "user".field15 AS user_field15, "user".field16 AS user_field16, "user".field17 AS user_field17, "user".field18 AS user_field18, "user".field19 AS user_field19, "user".field20 AS user_field20, "user".field21 AS user_field21, "user".field22 AS user_field22, "user".field23 AS user_field23, "user".field24 AS user_field24, "user".field25 AS user_field25, "user".field26 AS user_field26, "user".field27 AS user_field27, "user".field28 AS user_field28, "user".field29 AS user_field29, "user".field30 AS user_field30, "user".field31 AS user_field31, "user".field32 AS user_field32, "user".field33 AS user_field33, "user".field34 AS user_field34, "user".field35 AS user_field35, "user".field36 AS user_field36, "user".field37 AS user_field37, "user".field38 AS user_field38, "user".field39 AS user_field39, "user".field40 AS user_field40, "user".field41 AS user_field41, "user".field42 AS user_field42, "user".field43 AS user_field43, "user".field44 AS user_field44, "user".field45 AS user_field45, "user".field46 AS user_field46, "user".field47 AS user_field47, "user".field48 AS user_field48, "user".field49 AS user_field49, "user".field50 AS user_field50, "user".field51 AS user_field51, "user".field52 AS user_field52, "user".field53 AS user_field53, "user".field54 AS user_field54, "user".field55 AS user_field55, "user".field56 AS user_field56, "user".field57 AS user_field57, "user".field58 AS user_field58, "user".field59 AS user_field59, "user".field60 AS user_field60, "user".field61 AS user_field61, "user".field62 AS user_field62, "user".field63 AS user_field63, "user".field64 AS user_field64, "user".field65 AS user_field65, "user".field66 AS user_field66, "user".field67 AS user_field67, "user".field68 AS user_field68, "user".field69 AS user_field69, "user".field70 AS user_field70, "user".field71 AS user_field71, "user".field72 AS user_field72, "user".field73 AS user_field73, "user".field74 AS user_field74, "user".field75 AS user_field75, "user".field76 AS user_field76, "user".field77 AS user_field77, "user".field78 AS user_field78, "user".field79 AS user_field79, "user".field80 AS user_field80, "user".field81 AS user_field81, "user".field82 AS user_field82, "user".field83 AS user_field83, "user".field84 AS user_field84, "user".field85 AS user_field85, "user".field86 AS user_field86, "user".field87 AS user_field87, "user".field88 AS user_field88, "user".field89 AS user_field89, "user".field90 AS user_field90, "user".field91 AS user_field91, "user".field92 AS user_field92, "user".field93 AS user_field93, "user".field94 AS user_field94, "user".field95 AS user_field95, "user".field96 AS user_field96, "user".field97 AS user_field97, "user".field98 AS user_field98, "user".field99 AS user_field99, "user".field100 AS user_field100, "user".created_by AS user_created_by, "user".created_at AS user_created_at, "user".modified_by AS user_modified_by, "user".modified_at AS user_modified_at 
+FROM "user"
+2025-08-02 21:12:40,053 INFO [generated in 0.00013s] {}
+2025-08-02 21:12:40,055 INFO List users endpoint took 0.05 seconds
+2025-08-02 21:12:44,128 WARNING Error setting cache key 'app.routes.user_route:list_users:Bearer your-secret-token:/users/:' in backend:
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 302, in connect_check_health
+    await self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect()
+    )
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\retry.py", line 71, in call_with_retry
+    return await do()
+           ^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 755, in _connect
+    reader, writer = await asyncio.open_connection(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._connection_arguments()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1171, in create_connection
+    raise exceptions[0]
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 726, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+ConnectionRefusedError: [WinError 1225] The remote computer refused the network connection
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\decorator.py", line 191, in inner
+    await backend.set(cache_key, to_cache, expire)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi_cache\backends\redis.py", line 22, in set
+    await self.redis.set(key, value, ex=expire)  # type: ignore[union-attr]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\client.py", line 672, in execute_command
+    conn = self.connection or await pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1141, in get_connection
+    await self.ensure_connection(connection)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 1174, in ensure_connection
+    await connection.connect()
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 296, in connect
+    await self.connect_check_health(check_health=True)
+  File "C:\Users\satal\AppData\Local\Programs\Python\Python313\Lib\site-packages\redis\asyncio\connection.py", line 310, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 22 connecting to localhost:6379. The remote computer refused the network connection.
+2025-08-02 21:12:44,134 INFO ROLLBACK
+2025-08-02 21:21:49,972 INFO Using in-memory cache backend for development.
+2025-08-02 21:21:53,064 INFO select pg_catalog.version()
+2025-08-02 21:21:53,064 INFO [raw sql] {}
+2025-08-02 21:21:53,065 INFO select current_schema()
+2025-08-02 21:21:53,065 INFO [raw sql] {}
+2025-08-02 21:21:53,065 INFO show standard_conforming_strings
+2025-08-02 21:21:53,065 INFO [raw sql] {}
+2025-08-02 21:21:53,065 INFO BEGIN (implicit)
+2025-08-02 21:21:53,070 INFO SELECT "user".id AS user_id, "user".field1 AS user_field1, "user".field2 AS user_field2, "user".field3 AS user_field3, "user".field4 AS user_field4, "user".field5 AS user_field5, "user".field6 AS user_field6, "user".field7 AS user_field7, "user".field8 AS user_field8, "user".field9 AS user_field9, "user".field10 AS user_field10, "user".field11 AS user_field11, "user".field12 AS user_field12, "user".field13 AS user_field13, "user".field14 AS user_field14, "user".field15 AS user_field15, "user".field16 AS user_field16, "user".field17 AS user_field17, "user".field18 AS user_field18, "user".field19 AS user_field19, "user".field20 AS user_field20, "user".field21 AS user_field21, "user".field22 AS user_field22, "user".field23 AS user_field23, "user".field24 AS user_field24, "user".field25 AS user_field25, "user".field26 AS user_field26, "user".field27 AS user_field27, "user".field28 AS user_field28, "user".field29 AS user_field29, "user".field30 AS user_field30, "user".field31 AS user_field31, "user".field32 AS user_field32, "user".field33 AS user_field33, "user".field34 AS user_field34, "user".field35 AS user_field35, "user".field36 AS user_field36, "user".field37 AS user_field37, "user".field38 AS user_field38, "user".field39 AS user_field39, "user".field40 AS user_field40, "user".field41 AS user_field41, "user".field42 AS user_field42, "user".field43 AS user_field43, "user".field44 AS user_field44, "user".field45 AS user_field45, "user".field46 AS user_field46, "user".field47 AS user_field47, "user".field48 AS user_field48, "user".field49 AS user_field49, "user".field50 AS user_field50, "user".field51 AS user_field51, "user".field52 AS user_field52, "user".field53 AS user_field53, "user".field54 AS user_field54, "user".field55 AS user_field55, "user".field56 AS user_field56, "user".field57 AS user_field57, "user".field58 AS user_field58, "user".field59 AS user_field59, "user".field60 AS user_field60, "user".field61 AS user_field61, "user".field62 AS user_field62, "user".field63 AS user_field63, "user".field64 AS user_field64, "user".field65 AS user_field65, "user".field66 AS user_field66, "user".field67 AS user_field67, "user".field68 AS user_field68, "user".field69 AS user_field69, "user".field70 AS user_field70, "user".field71 AS user_field71, "user".field72 AS user_field72, "user".field73 AS user_field73, "user".field74 AS user_field74, "user".field75 AS user_field75, "user".field76 AS user_field76, "user".field77 AS user_field77, "user".field78 AS user_field78, "user".field79 AS user_field79, "user".field80 AS user_field80, "user".field81 AS user_field81, "user".field82 AS user_field82, "user".field83 AS user_field83, "user".field84 AS user_field84, "user".field85 AS user_field85, "user".field86 AS user_field86, "user".field87 AS user_field87, "user".field88 AS user_field88, "user".field89 AS user_field89, "user".field90 AS user_field90, "user".field91 AS user_field91, "user".field92 AS user_field92, "user".field93 AS user_field93, "user".field94 AS user_field94, "user".field95 AS user_field95, "user".field96 AS user_field96, "user".field97 AS user_field97, "user".field98 AS user_field98, "user".field99 AS user_field99, "user".field100 AS user_field100, "user".created_by AS user_created_by, "user".created_at AS user_created_at, "user".modified_by AS user_modified_by, "user".modified_at AS user_modified_at 
+FROM "user"
+2025-08-02 21:21:53,070 INFO [generated in 0.00012s] {}
+2025-08-02 21:21:53,071 INFO List users endpoint took 0.05 seconds
+2025-08-02 21:21:53,072 INFO ROLLBACK
+2025-08-02 21:22:06,295 INFO BEGIN (implicit)
+2025-08-02 21:22:06,297 INFO SELECT "user".id AS user_id, "user".field1 AS user_field1, "user".field2 AS user_field2, "user".field3 AS user_field3, "user".field4 AS user_field4, "user".field5 AS user_field5, "user".field6 AS user_field6, "user".field7 AS user_field7, "user".field8 AS user_field8, "user".field9 AS user_field9, "user".field10 AS user_field10, "user".field11 AS user_field11, "user".field12 AS user_field12, "user".field13 AS user_field13, "user".field14 AS user_field14, "user".field15 AS user_field15, "user".field16 AS user_field16, "user".field17 AS user_field17, "user".field18 AS user_field18, "user".field19 AS user_field19, "user".field20 AS user_field20, "user".field21 AS user_field21, "user".field22 AS user_field22, "user".field23 AS user_field23, "user".field24 AS user_field24, "user".field25 AS user_field25, "user".field26 AS user_field26, "user".field27 AS user_field27, "user".field28 AS user_field28, "user".field29 AS user_field29, "user".field30 AS user_field30, "user".field31 AS user_field31, "user".field32 AS user_field32, "user".field33 AS user_field33, "user".field34 AS user_field34, "user".field35 AS user_field35, "user".field36 AS user_field36, "user".field37 AS user_field37, "user".field38 AS user_field38, "user".field39 AS user_field39, "user".field40 AS user_field40, "user".field41 AS user_field41, "user".field42 AS user_field42, "user".field43 AS user_field43, "user".field44 AS user_field44, "user".field45 AS user_field45, "user".field46 AS user_field46, "user".field47 AS user_field47, "user".field48 AS user_field48, "user".field49 AS user_field49, "user".field50 AS user_field50, "user".field51 AS user_field51, "user".field52 AS user_field52, "user".field53 AS user_field53, "user".field54 AS user_field54, "user".field55 AS user_field55, "user".field56 AS user_field56, "user".field57 AS user_field57, "user".field58 AS user_field58, "user".field59 AS user_field59, "user".field60 AS user_field60, "user".field61 AS user_field61, "user".field62 AS user_field62, "user".field63 AS user_field63, "user".field64 AS user_field64, "user".field65 AS user_field65, "user".field66 AS user_field66, "user".field67 AS user_field67, "user".field68 AS user_field68, "user".field69 AS user_field69, "user".field70 AS user_field70, "user".field71 AS user_field71, "user".field72 AS user_field72, "user".field73 AS user_field73, "user".field74 AS user_field74, "user".field75 AS user_field75, "user".field76 AS user_field76, "user".field77 AS user_field77, "user".field78 AS user_field78, "user".field79 AS user_field79, "user".field80 AS user_field80, "user".field81 AS user_field81, "user".field82 AS user_field82, "user".field83 AS user_field83, "user".field84 AS user_field84, "user".field85 AS user_field85, "user".field86 AS user_field86, "user".field87 AS user_field87, "user".field88 AS user_field88, "user".field89 AS user_field89, "user".field90 AS user_field90, "user".field91 AS user_field91, "user".field92 AS user_field92, "user".field93 AS user_field93, "user".field94 AS user_field94, "user".field95 AS user_field95, "user".field96 AS user_field96, "user".field97 AS user_field97, "user".field98 AS user_field98, "user".field99 AS user_field99, "user".field100 AS user_field100, "user".created_by AS user_created_by, "user".created_at AS user_created_at, "user".modified_by AS user_modified_by, "user".modified_at AS user_modified_at 
+FROM "user" 
+WHERE "user".id = %(pk_1)s
+2025-08-02 21:22:06,297 INFO [generated in 0.00020s] {'pk_1': 2}
+2025-08-02 21:22:06,300 INFO ROLLBACK
