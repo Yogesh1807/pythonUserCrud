@@ -16,7 +16,7 @@ from fastapi_cache.backends.redis import RedisBackend
 from fastapi_cache.backends.inmemory import InMemoryBackend
 from redis.asyncio import Redis
 import time
-import logging
+# import logging
 
 load_dotenv()
 
@@ -38,10 +38,10 @@ async def on_startup():
     if settings.ENV.lower() == "production":
         redis_instance = Redis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=0)
         FastAPICache.init(RedisBackend(redis_instance), prefix="fastapi-cache")
-        logging.info("Using Redis cache backend for production.")
+        # logging.info("Using Redis cache backend for production.")
     else:
         FastAPICache.init(InMemoryBackend(), prefix="fastapi-cache")
-        logging.info("Using in-memory cache backend for development.")
+        # logging.info("Using in-memory cache backend for development.")
 
 # Routes
 @app.get("/ping")
