@@ -1,11 +1,14 @@
 {
   "cSpell.words": [
     "dotenv",
+    "fastapi",
     "httpsredirect",
     "inmemory",
     "levelname",
     "mydb",
+    "psycopg",
     "slowapi",
+    "sqlmodel",
     "uvicorn"
   ]
 }

@@ -30,7 +30,7 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 app.add_exception_handler(Exception, sqlalchemy_exception_handler)
 
 # Logging
-configure_logging()
+# configure_logging()
 
 # Startup cache
 @app.on_event("startup")

@@ -1,7 +1,6 @@
 # app/core/logging_config.py
 import logging
 from app.core.config import settings
-import os
 
 def configure_logging():
     if settings.ENV.lower() == "production":
@@ -11,7 +10,7 @@ def configure_logging():
             format="%(asctime)s %(levelname)s %(message)s"
         )
     else:
-        # Log to file in development
+        # Log to file in development only
         logging.basicConfig(
             level=logging.INFO,
             format="%(asctime)s %(levelname)s %(message)s",
