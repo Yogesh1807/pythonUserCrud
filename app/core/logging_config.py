@@ -1,11 +1,20 @@
 # app/core/logging_config.py
 import logging
 from app.core.config import settings
+import os
 
 def configure_logging():
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s %(levelname)s %(message)s",
-        filename=settings.LOG_FILE_PATH,
-        filemode="a"
-    )
+    if settings.ENV.lower() == "production":
+        # Log to console only (stdout)
+        logging.basicConfig(
+            level=logging.INFO,
+            format="%(asctime)s %(levelname)s %(message)s"
+        )
+    else:
+        # Log to file in development
+        logging.basicConfig(
+            level=logging.INFO,
+            format="%(asctime)s %(levelname)s %(message)s",
+            filename=settings.LOG_FILE_PATH,
+            filemode="a"
+        )
