@@ -11,6 +11,7 @@ from typing import List
 from app.utils.auth import verify_token
 from app.core.config import settings
 
+router = APIRouter()
 
 @router.post("/", response_model=UserRead)
 def create_user(request: Request, user: UserCreate, session: Session = Depends(get_session)) -> UserRead:
