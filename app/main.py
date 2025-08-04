@@ -13,6 +13,7 @@ from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.inmemory import InMemoryBackend
+from fastapi.responses import FileResponse
 import time
 # import logging
 
@@ -44,6 +45,13 @@ async def ping(request: Request):
     duration = time.perf_counter() - start
     response["duration_ms"] = round(duration * 1000, 2)
     return response
+
+@app.get("/favicon.png")
+async def favicon():
+    favicon_path = os.path.join(os.path.dirname(__file__), "favicon.png")
+    if os.path.exists(favicon_path):
+        return FileResponse(favicon_path)
+    return {"detail": "No favicon"}, 404
 
 app.include_router(user_router, prefix="/users", tags=["Users"])
 app.include_router(log_router, prefix="/log", tags=["Log"])
