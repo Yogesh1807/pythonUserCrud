@@ -11,7 +11,6 @@ from typing import List
 from app.utils.auth import verify_token
 from fastapi_cache.decorator import cache
 from app.utils.cache import user_token_cache_key
-from fastapi_cache import FastAPICache
 from fastapi_cache.backends.inmemory import InMemoryBackend
 from app.core.config import settings
 
