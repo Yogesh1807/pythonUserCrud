@@ -11,7 +11,6 @@ from app.routes.log_route import router as log_router
 from app.limiter import limiter
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
-from fastapi_cache.backends.inmemory import InMemoryBackend
 from fastapi.responses import FileResponse
 import time
 # import logging
