@@ -14,12 +14,11 @@ from app.utils.cache import user_token_cache_key
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.inmemory import InMemoryBackend
 from app.core.config import settings
-from app.core.cache_utils import cache_dependency
 
 expire = 60  # Cache expiration time in seconds
 
 router = APIRouter(
-    dependencies=[Depends(verify_token), Depends(cache_dependency)]
+    dependencies=[Depends(verify_token)]
 )
 
 @router.post("/", response_model=UserRead)
