@@ -3,7 +3,5 @@ from fastapi_cache import FastAPICache
 
 def cache_dependency():
     if not FastAPICache.get_backend():
-        if settings.ENV.lower() == "production":
-            FastAPICache.init(InMemoryBackend(), prefix="fastapi-cache")
-        else:
-            FastAPICache.init(InMemoryBackend(), prefix="fastapi-cache")
+        FastAPICache.init(InMemoryBackend(), prefix="fastapi-cache")
+      

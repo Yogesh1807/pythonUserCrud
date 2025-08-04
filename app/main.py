@@ -11,7 +11,6 @@ from app.routes.log_route import router as log_router
 from app.limiter import limiter
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
-from fastapi_cache import FastAPICache
 from fastapi_cache.backends.inmemory import InMemoryBackend
 from fastapi.responses import FileResponse
 import time
@@ -28,13 +27,7 @@ app.middleware("http")(log_requests)
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 app.add_exception_handler(Exception, sqlalchemy_exception_handler)
 
-# Logging
-# configure_logging()
 
-# Startup cache
-# @app.on_event("startup")
-# async def on_startup():
-#     FastAPICache.init(InMemoryBackend(), prefix="fastapi-cache")
 
 # Routes
 @app.get("/ping")
