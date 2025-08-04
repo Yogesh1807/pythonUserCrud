@@ -12,9 +12,7 @@ from app.limiter import limiter
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 from fastapi_cache import FastAPICache
-from fastapi_cache.backends.redis import RedisBackend
 from fastapi_cache.backends.inmemory import InMemoryBackend
-from redis.asyncio import Redis
 import time
 # import logging
 
@@ -35,13 +33,7 @@ app.add_exception_handler(Exception, sqlalchemy_exception_handler)
 # Startup cache
 @app.on_event("startup")
 async def on_startup():
-    if settings.ENV.lower() == "production":
-        redis_instance = Redis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=0)
-        FastAPICache.init(RedisBackend(redis_instance), prefix="fastapi-cache")
-        # logging.info("Using Redis cache backend for production.")
-    else:
-        FastAPICache.init(InMemoryBackend(), prefix="fastapi-cache")
-        # logging.info("Using in-memory cache backend for development.")
+    FastAPICache.init(InMemoryBackend(), prefix="fastapi-cache")
 
 # Routes
 @app.get("/ping")

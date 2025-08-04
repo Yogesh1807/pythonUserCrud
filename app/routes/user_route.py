@@ -13,8 +13,6 @@ from fastapi_cache.decorator import cache
 from app.utils.cache import user_token_cache_key
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.inmemory import InMemoryBackend
-from fastapi_cache.backends.redis import RedisBackend
-from redis.asyncio import Redis
 from app.core.config import settings
 from app.core.cache_utils import cache_dependency
 
