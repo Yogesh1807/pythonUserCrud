@@ -32,9 +32,9 @@ app.add_exception_handler(Exception, sqlalchemy_exception_handler)
 # configure_logging()
 
 # Startup cache
-@app.on_event("startup")
-async def on_startup():
-    FastAPICache.init(InMemoryBackend(), prefix="fastapi-cache")
+# @app.on_event("startup")
+# async def on_startup():
+#     FastAPICache.init(InMemoryBackend(), prefix="fastapi-cache")
 
 # Routes
 @app.get("/ping")
